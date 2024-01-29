@@ -64,4 +64,4 @@ function numberChange(params) {
   }
   return newArr.join(' ')
 }
-console.log(numberChange('Men 2019-yil tug`ilganman 55 yildan buyon Toshkentdan yashayman'))
+console.log(numberChange('Men 2000-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
