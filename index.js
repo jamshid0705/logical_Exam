@@ -4,6 +4,7 @@ let x;
 function switchFunc(num){
   let newString;
   switch(num){
+    case 0:newString='';break;
     case 1:newString='bir';break;
     case 2:newString='ikki';break;
     case 3:newString='uch';break;
@@ -46,7 +47,7 @@ function stringToNumber(num){
     arr.push(switchFunc(Number.parseInt(q3)*10))
   }
   num
-  if(num>=1){
+  if(num>=0){
     arr.push(switchFunc(num)+`${newNum<=99?'':'inchi'}`)
   }
   return arr.join(' ')
@@ -63,4 +64,4 @@ function numberChange(params) {
   }
   return newArr.join(' ')
 }
-console.log(numberChange('Men 2001-yil tug`ilganman. 36 yildan buyon Toshkentdan yashayman.'))
+console.log(numberChange('Men 2019-yil tug`ilganman 55 yildan buyon Toshkentdan yashayman'))
