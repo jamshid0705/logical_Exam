@@ -52,6 +52,7 @@ function stringToNumber(num){
   let a=num.toString().length/3
   let newArr=[]
   let newArr1=[]
+  let newArr2=[]
   for(let i=0;i<a;i++){
     newArr.push(num%1000)
     num=(num-num%1000)/1000
@@ -68,9 +69,12 @@ function stringToNumber(num){
   if(newArr[3]){
     newArr1.push(stringFunc(newArr[3],' milliard',3))
   }
-  return newArr1.join(' ')
+  for(let i=newArr1.length;i>=0;i--){
+    newArr2.push(newArr1[i])
+  }
+  return newArr2.join(' ')
 }
-console.log(stringToNumber(763340007007))
+// console.log(stringToNumber(763340007007))
 
 function numberChange(params) {
   params=params.replace('-',' inchi ')
@@ -90,4 +94,4 @@ function numberChange(params) {
   }
   return newArr.join(' ')
 }
-// console.log(numberChange('Men 2031-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
+console.log(numberChange('Men 0301764536499-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
