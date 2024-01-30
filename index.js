@@ -27,19 +27,14 @@ function switchFunc(num){
   return newString;
 }
 
-function stringToNumber(num){
-  let newNum=num
+function stringFunc(num,str,val){
   let q1,q2,q3
+  q1=num.toString().length
   let arr=[]
-  q1=num/1000
-  num=num%1000
-  if(q1>=1){
-    arr.push(switchFunc(Number.parseInt(q1))+' ming')
-  }
   q2=num/100
   num=num%100
   if(q2>=1){
-    arr.push(switchFunc(Number.parseInt(q2))+' yuz')
+    arr.push(switchFunc(Number.parseInt(q2))+`${q1===3?' yuz':''}`)
   }
   q3=num/10
   num=num%10
@@ -48,20 +43,51 @@ function stringToNumber(num){
   }
   num
   if(num>=0){
-    arr.push(switchFunc(num)+`${newNum<=99?'':'inchi'}`)
+    arr.push(switchFunc(num)+`${val===0?'':str}`)
   }
   return arr.join(' ')
 }
 
+function stringToNumber(num){
+  let a=num.toString().length/3
+  let newArr=[]
+  let newArr1=[]
+  for(let i=0;i<a;i++){
+    newArr.push(num%1000)
+    num=(num-num%1000)/1000
+  }
+  if(newArr[0]){
+    newArr1.push(stringFunc(newArr[0],'yuz',0))
+  }
+  if(newArr[1]){
+    newArr1.push(stringFunc(newArr[1],' ming',1))
+  }
+  if(newArr[2]){
+    newArr1.push(stringFunc(newArr[2],' million',2))
+  }
+  if(newArr[3]){
+    newArr1.push(stringFunc(newArr[3],' milliard',3))
+  }
+  return newArr1.join(' ')
+}
+console.log(stringToNumber(763340007007))
+
 function numberChange(params) {
-  params=params.replace('-',' ')
+  params=params.replace('-',' inchi ')
   newArr=params.split(' ')
+  console.log(newArr)
   for(let i=0;i<newArr.length;i++){
-    x=Number(newArr[i]%2)
+    x=Number.parseInt(newArr[i]%2)
     if(x===0 || x===1){
       newArr[i]=stringToNumber(Number(newArr[i]))
     }
   }
+  for(let i=0;i<newArr.length;i++){
+    if(newArr[i]==='inchi'){
+      newArr[i]=newArr[i-1]+newArr[i]
+      newArr[i-1]=''
+    }
+  }
   return newArr.join(' ')
 }
-console.log(numberChange('Men 2000-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
+// console.log(numberChange('Men 2031-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
