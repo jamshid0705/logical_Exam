@@ -29,8 +29,8 @@ function switchFunc(num){
 
 function stringFunc(num,str,val){
   let q1,q2,q3
-  q1=num.toString().length
   let arr=[]
+  q1=num.toString().length
   q2=num/100
   num=num%100
   if(q2>=1){
@@ -72,6 +72,7 @@ function stringToNumber(num){
   for(let i=newArr1.length;i>=0;i--){
     newArr2.push(newArr1[i])
   }
+  // console.log(newArr2)
   return newArr2.join(' ')
 }
 // console.log(stringToNumber(763340007007))
@@ -79,7 +80,6 @@ function stringToNumber(num){
 function numberChange(params) {
   params=params.replace('-',' inchi ')
   newArr=params.split(' ')
-  console.log(newArr)
   for(let i=0;i<newArr.length;i++){
     x=Number.parseInt(newArr[i]%2)
     if(x===0 || x===1){
@@ -92,6 +92,7 @@ function numberChange(params) {
       newArr[i-1]=''
     }
   }
+  // console.log(newArr)
   return newArr.join(' ')
 }
-console.log(numberChange('Men 0301764536499-yil tug`ilganman 5 yildan buyon Toshkentdan yashayman'))
+console.log(numberChange('Menda 300010000110 so`m pul bor'))
